@@ -1,0 +1,77 @@
+[build-system]
+requires = ["setuptools"] # REQUIRED if [build-system] table is used
+build-backend = "setuptools.build_meta" # If not defined, then legacy behavior can happen.
+
+
+[project]
+name = "documentfix"
+
+version = "0.0.1" # REQUIRED, although can be dynamic
+
+description = "Correct photographed pages and convert to pdf"
+
+readme = "README.md"
+
+
+requires-python = ">=3.9"
+license = { file = "LICENSE.txt" }
+
+
+keywords = ["gtk", "book", "scanning"]
+authors = [{ name = "James Harris", email = "mail@jamesharris.me.uk" }]
+maintainers = [{ name = "James Harris", email = "mail@jamesharris.me.uk" }]
+
+# Classifiers help users find your project by categorizing it.
+#
+# For a list of valid classifiers, see https://pypi.org/classifiers/
+classifiers = [
+  # How mature is this project? Common values are
+  #   3 - Alpha
+  #   4 - Beta
+  #   5 - Production/Stable
+  "Development Status :: 3 - Alpha",
+
+  "Intended Audience :: End Users/Desktop ",
+  "Topic :: Utilities",
+
+  
+  "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+  "Environment :: X11 Applications :: GTK",
+  
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3 :: Only",
+]
+
+# This field lists other packages that your project depends on to run.
+# Any package you put here will be installed by pip when your project is
+# installed, so they must be valid existing projects.
+#
+# For an analysis of this field vs pip's requirements files see:
+# https://packaging.python.org/discussions/install-requires-vs-requirements/
+dependencies = [
+    "numpy",
+    "pycairo",
+    "PyGObject",
+    "pillow",    
+    ]
+
+[project.optional-dependencies]
+#dev = ["check-manifest"]
+#test = ["coverage"]
+
+[project.urls]
+"Homepage" = "https://github.com/jharris2268/documentfix"
+
+# The following would provide a command line executable called `sample`
+# which executes the function `main` from this package when invoked.
+[project.scripts]
+documentfix = "documentfix:main"
+
+
+[tool.setuptools]
+#package-data = { "sample" = ["*.dat"] }
