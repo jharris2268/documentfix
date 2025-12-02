@@ -9,7 +9,6 @@ from .imageutils import rotate_left, rotate_right, find_corners, transform_image
 from .draw import Draw
 
 
-
 def set_spacing(box, is_grid=False):
     if is_grid:
         box.set_row_spacing(10)
@@ -58,6 +57,7 @@ class MainWindow(Gtk.ApplicationWindow):
         main_box.attach(self.left_draw, 0, 0, width=10, height=10)
         
         self.right_draw = Draw(self)
+        
         self.right_draw.set_size_request(500,700)
         main_box.attach(self.right_draw, 10, 0, width=10, height=10)
         
@@ -94,13 +94,13 @@ class MainWindow(Gtk.ApplicationWindow):
     def rotate_left(self, evt):
         
         self.img = rotate_left(self.img)
-        self.left_draw.prep_surface(self.img)
+        self.left_draw.set_image(self.img)
         self.redraw()
         
     def rotate_right(self, evt):
         
         self.img = rotate_right(self.img)
-        self.left_draw.prep_surface(self.img)
+        self.left_draw.set_image(self.img)
         self.redraw()
     
     def process(self, evt):
@@ -108,7 +108,7 @@ class MainWindow(Gtk.ApplicationWindow):
         corners = find_corners(self.left_draw.pts)
         self.processed_img = transform_image(self.img, corners)
         
-        self.right_draw.prep_surface(self.processed_img)
+        self.right_draw.set_image(self.processed_img)
         self.redraw()
     
     
